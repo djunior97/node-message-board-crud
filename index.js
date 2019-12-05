@@ -2,9 +2,10 @@ const express = require('express');
 
 const server = express();
 
+const messages = [];
+
 server.use(express.json());
 
-const messages = [];
 
 // Middleware para checar se o ID descrito no body existe dentro de messages
 function checkIfMessageExists(req, res, next) {
@@ -22,14 +23,14 @@ function checkIfMessageExists(req, res, next) {
 server.get('/messages', (req, res) => res.json(messages));
 
 server.post('/messages', (req, res) => {
-    const {title, content} = req.body,
-          id = messages.length + 1;
-
+    const {title, content} = req.body;
+    const id = messages.length + 1;
     const newProject = {
         id,
         title,
         content
     };
+
 
     messages.push(newProject);
 
