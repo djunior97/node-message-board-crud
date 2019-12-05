@@ -6,7 +6,7 @@ server.use(express.json());
 
 const messages = [];
 
-// Middleware para chegar se o ID descrito no body existe dentro de messages
+// Middleware para checar se o ID descrito no body existe dentro de messages
 function checkIfMessageExists(req, res, next) {
     const {id} = req.params;
 
